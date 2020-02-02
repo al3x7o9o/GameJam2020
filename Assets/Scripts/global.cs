@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Globals
 {
     public static class global
     {
+        public static int status = 0;
         public static int life = 3;
         public static int level = 0;
         public static bool upgradable = true;

@@ -5,6 +5,8 @@ using Globals;
 
 public class knightAnimation : MonoBehaviour
 {
+    private bool dead = false;
+    public int life;
     private bool clear = true;
     Animator anim;
     public float speed;
@@ -14,17 +16,44 @@ public class knightAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.name == "Enemy(Clone)")
+        {
+            life--;
+            clear = true;
+            anim.Play("silver_knight_walk");
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Enemy")
+        if (collision.name == "Enemy(Clone)")
         {
             anim.Play("silver_knight_attack");
             clear = false;
         }
     }
+    public float Timer = 2;
     // Update is called once per frame
     void Update()
     {
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
+        //if (dead)
+        //{
+        //    Timer -= Time.deltaTime;
+        //}
+        //if (Timer <= 0 && dead)
+        //{
+        //    Destroy(gameObject);
+        //}
+        if (global.status != 0)
+        {
+            Destroy(gameObject);
+        }
         if (transform.position.x >= 60.1f)
         {
             if (global.progression < 100)

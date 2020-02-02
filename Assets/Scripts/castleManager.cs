@@ -5,6 +5,9 @@ using Globals;
 
 public class castleManager : MonoBehaviour
 {
+    public GameObject a;
+    public GameObject b;
+
     List<Sprite> Castles = new List<Sprite>();
     public GameObject knight;
     public GameObject spearman;
@@ -97,12 +100,19 @@ public class castleManager : MonoBehaviour
                     tmp5 = new Vector3(troll.transform.position.x, troll.transform.position.y, -0.1f);
                     troll.transform.position = tmp5;
                 }
-                if (global.level == 7)
+                if (global.level == 6)
                 {
+
                     Vector3 tmp6 = new Vector3(king.transform.position.x, king.transform.position.y, -0.1f);
                     king.transform.position = tmp6;
                     tmp6 = new Vector3(dragon.transform.position.x, dragon.transform.position.y, -0.1f);
                     dragon.transform.position = tmp6;
+                }
+                if (global.level == 7)
+                {
+                    Destroy(a);
+                    Destroy(b);
+                    global.status = 1;
                 }
 
                 GetComponent<SpriteRenderer>().sprite = Castles[count];
@@ -117,6 +127,10 @@ public class castleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            if (global.status == -1)
+            {
+                Destroy(gameObject);
+            }
         //Debug.Log(count);
         if (global.toChange)
         {

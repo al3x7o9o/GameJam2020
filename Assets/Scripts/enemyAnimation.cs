@@ -3,35 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Globals;
 
-public class fairyAnimation : MonoBehaviour
+public class enemyAnimation : MonoBehaviour
 {
     private bool dead = false;
-    public int life;
     private bool clear = true;
-    Animator anim;
     public float speed;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Enemy(Clone)")
+        if (collision.name != "portal" && collision.name != "Enemy(Clone)" && collision.name != "Castle")
         {
-
-            anim.Play("fairy_attack");
-            life--;
+            global.gold++;
+            dead = true;
+            anim.Play("enemyAttack");
+            clear = false;
+        }
+        if (collision.name == "Castle")
+        {
+            global.gold--;
+            dead = true;
+            anim.Play("enemyAttack");
             clear = false;
         }
     }
     public float Timer = 2;
+
     // Update is called once per frame
     void Update()
     {
-        if (life <= 0)
+        if (global.status != 0)
         {
-            dead = true;
+            Destroy(gameObject);
         }
         if (dead)
         {
@@ -41,25 +49,9 @@ public class fairyAnimation : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (global.status != 0)
-        {
-            Destroy(gameObject);
-        }
-        if (transform.position.x >= 60.1f)
-        {
-            if (global.progression < 100)
-            {
-                global.progression += 7;
-            }
-            if (global.progression >= 100)
-            {
-                global.progression = 100;
-            }
-            Destroy(gameObject);
-        }
         if (clear)
         {
-            transform.position += Vector3.right * Time.deltaTime * speed;
+            transform.position += Vector3.left * Time.deltaTime * speed;
         }
     }
 }

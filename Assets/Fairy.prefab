@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8003947717242697351}
   - component: {fileID: 4779989548125423477}
   - component: {fileID: 1459212341845016339}
+  - component: {fileID: 5630913912536794162}
   m_Layer: 0
   m_Name: Fairy
   m_TagString: Untagged
@@ -114,7 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e018694ef05fca488c33eb8f5111137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  life: 1
+  speed: 2
+  Timer: 2
 --- !u!50 &1459212341845016339
 Rigidbody2D:
   serializedVersion: 4
@@ -136,3 +139,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &5630913912536794162
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203697353872322681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.76, y: 4.42}
+    newSize: {x: 4.76, y: 4.42}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.76, y: 4.42}
+  m_EdgeRadius: 0

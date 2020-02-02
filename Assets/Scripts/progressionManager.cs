@@ -14,6 +14,12 @@ public class progressionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+   
+        if (global.status != 0)
+        {
+            Destroy(gameObject);
+        }
+   
         if (!global.maxed)
         {
             Transform bar = transform.Find("Bar");

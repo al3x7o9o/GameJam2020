@@ -17,6 +17,10 @@ public class dragonAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (global.status != 0)
+        {
+            Destroy(gameObject);
+        }
         if (transform.position.x >= 60.1f)
         {
             if (global.progression < 100)
